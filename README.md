@@ -15,6 +15,7 @@
 - [ESP-BRIDGE](#esp-bridge)
 - [ESP-SERVER](#esp-server)
 - [PROTOKOL KOMUNIKASI](#protokol-komunikasi)
+- [KOMUNIKASI LAPTOP ⇄ ESP-BRIDGE](#komunikasi-laptop--esp-bridge)
 - [JSON DAN HEXADECIMAL](#json-dan-hexadecimal)
 - [ERROR CODE](#error-code)
 - [CARA BERJALAN](#cara-berjalan)
@@ -61,6 +62,7 @@ Program harus:
 - Mengirim data melalui Serial Communication.
 - Menerima respons dari ESP-Bridge.
 - Menampilkan hasil yang dapat dibaca pengguna, bukan sekadar rangkaian hexadecimal.
+- Menjaga komunikasi Laptop ⇄ ESP-Bridge sesederhana mungkin dan mudah dioperasikan, sesuai ketentuan pada bagian [KOMUNIKASI LAPTOP ⇄ ESP-BRIDGE](#komunikasi-laptop--esp-bridge).
 
 ### **TODO 2 — ESP-BRIDGE**
 
@@ -124,6 +126,8 @@ Setiap peserta mendapatkan satu perusahaan dari daftar berikut. Perusahaan perta
 
   **Entitas data utama:** Menu (ID menu, nama, kategori, harga satuan, stok porsi tersisa, status tersedia), Pesanan (nomor pesanan, daftar item, jumlah tiap item, total harga, status pesanan, waktu pembuatan).
 
+  **Token:** `444550303031`
+
   **Aturan bisnis:**
 
   - Satu pesanan boleh memuat lebih dari satu item menu, dan setiap item memiliki jumlah porsi.
@@ -159,6 +163,8 @@ Setiap perusahaan di bawah ini memiliki latar belakang, produk/layanan, entitas 
 
   **Entitas data utama:** Kiriman (nomor resi, berat paket, jenis layanan, asal, tujuan, biaya, asuransi, status, waktu pembuatan), Tarif layanan (kode kelas layanan, tarif per kilogram, estimasi durasi, batas berat minimum dan maksimum), Status perjalanan (resi, status saat ini, riwayat status).
 
+  **Token:** `4B494C415431`
+
   **Aturan bisnis:**
 
   - Berat paket harus berupa angka positif; paket nol, negatif, atau bukan angka ditolak.
@@ -189,6 +195,8 @@ Setiap perusahaan di bawah ini memiliki latar belakang, produk/layanan, entitas 
   **Aktor yang terlibat:** Anggota/Peminjam (mengajukan peminjaman dan pengembalian), Pustakawan (mengelola katalog dan mencatat transaksi).
 
   **Entitas data utama:** Buku (ID buku, judul, pengarang, kategori, total eksemplar, stok tersedia, batas durasi maksimum), Peminjaman (ID transaksi, ID buku, ID peminjam, tanggal pinjam, tanggal jatuh tempo, status, jumlah hari), Anggota (ID peminjam, nama, jumlah peminjaman aktif).
+
+  **Token:** `42554B554B31`
 
   **Aturan bisnis:**
 
@@ -221,6 +229,8 @@ Setiap perusahaan di bawah ini memiliki latar belakang, produk/layanan, entitas 
 
   **Entitas data utama:** Zona parkir (ID zona, jenis kendaraan, total slot, slot terisi, tarif per jam, tarif maksimum harian), Tiket (ID tiket, nomor pelat, ID zona, waktu masuk, waktu keluar, durasi, biaya), Langganan (nomor pelat, jenis kendaraan, tarif tetap).
 
+  **Token:** `5041524B4952`
+
   **Aturan bisnis:**
 
   - Nomor pelat wajib diisi, tidak boleh kosong, dan harus mengikuti format yang diizinkan.
@@ -251,6 +261,8 @@ Setiap perusahaan di bawah ini memiliki latar belakang, produk/layanan, entitas 
   **Aktor yang terlibat:** Pelanggan (menentukan barang dan jumlah), Kasir (memproses transaksi dan menyerahkan struk), Staf gudang (memperbarui harga dan stok).
 
   **Entitas data utama:** Produk (ID produk, nama, kategori, satuan, harga, stok, batas beli maksimum), Transaksi/Struk (nomor struk, daftar item, total belanja, waktu transaksi), Item struk (ID produk, jumlah, subtotal).
+
+  **Token:** `465253483031`
 
   **Aturan bisnis:**
 
@@ -283,6 +295,8 @@ Setiap perusahaan di bawah ini memiliki latar belakang, produk/layanan, entitas 
 
   **Entitas data utama:** Layanan (ID layanan, nama layanan, kode poli, kuota per sesi, sesi waktu, tarif), Pendaftaran (ID pendaftaran, ID layanan, identitas pasien, tanggal, nomor antrean, status), Pasien (nomor identitas pasien, nama, keluhan singkat).
 
+  **Token:** `4B4C494E3031`
+
   **Aturan bisnis:**
 
   - ID layanan harus terdaftar dan pendaftarannya harus menunjuk sesi yang masih membuka pendaftaran.
@@ -312,6 +326,8 @@ Setiap perusahaan di bawah ini memiliki latar belakang, produk/layanan, entitas 
   **Aktor yang terlibat:** Pelanggan (mengajukan servis, menanyakan status, mengambil perangkat), Teknisi (memperbarui status dan biaya), Front office (menerima perangkat dan menyerahkan tiket).
 
   **Entitas data utama:** Tiket servis (ID tiket, jenis perangkat, merek, model, keluhan, estimasi biaya, biaya final, status, tanggal masuk, tanggal selesai), Daftar tarif (jenis perangkat, kategori kerusakan, biaya jasa, perkiraan komponen), Riwayat status (ID tiket, status, keterangan, waktu pembaruan).
+
+  **Token:** `5352564C3031`
 
   **Aturan bisnis:**
 
@@ -343,6 +359,8 @@ Setiap perusahaan di bawah ini memiliki latar belakang, produk/layanan, entitas 
   **Aktor yang terlibat:** Pelanggan (menyetor cucian, menanyakan status, mengambil cucian), Petugas kasir (membuat pesanan dan menimbang), Operator mesin (memperbarui status pengerjaan).
 
   **Entitas data utama:** Pesanan (nomor transaksi, berat, jenis layanan, layanan tambahan, total biaya, status, tanggal masuk, tanggal siap), Daftar tarif (kode layanan, tarif per kilogram, durasi pengerjaan, batas jam terima), Status pengerjaan (nomor transaksi, status saat ini, waktu pembaruan).
+
+  **Token:** `4C4E44525931`
 
   **Aturan bisnis:**
 
@@ -403,6 +421,7 @@ ESP-Bridge bertanggung jawab meneruskan data dari laptop ke ESP-Server serta men
 - Menerima respons dari ESP-Server.
 - Mengubah kode respons atau data hexadecimal menjadi bentuk yang dapat dibaca.
 - Mengirim hasil yang sudah diterjemahkan kepada laptop melalui serial.
+- Menjaga sisi Laptop ⇄ ESP-Bridge sesederhana mungkin: pengguna cukup mengirim satu permintaan mudah dipahami dan menerima satu hasil yang dapat dibaca.
 - Tidak menjalankan proses bisnis perusahaan.
 
 **KOMUNIKASI MINIMAL**
@@ -492,6 +511,47 @@ Representasi hexadecimal adalah cara menuliskan nilai byte menggunakan digit `0�
 Apabila payload dikirim sebagai teks hexadecimal ASCII, ukurannya menjadi dua kali jumlah byte data aslinya. Oleh karena itu, gunakan representasi hexadecimal tekstual hanya sesuai kebutuhan protokol; jika protokol mengizinkan, transmisi byte hasil decoding lebih hemat bandwidth.
 
 Jika data melebihi batas payload ESP-NOW, peserta harus memecah data menjadi beberapa paket dan menyusunnya kembali di sisi penerima.
+
+## KOMUNIKASI LAPTOP ⇄ ESP-BRIDGE
+
+**PRINSIP SEDERHANA DAN MUDAH DIOPERASIKAN**
+
+**DESKRIPSI**
+
+Komunikasi antara laptop dan ESP-Bridge harus sesederhana mungkin dan mudah dioperasikan. Pengguna laptop cukup memberikan masukan dalam bentuk yang akrab (perintah atau isian satu baris per permintaan), sementara seluruh kompleksitas disembunyikan: konversi JSON ke hexadecimal, pengemasan paket ESP-NOW, penyertaan token, dan penerjemahan kode error semuanya ditangani oleh program laptop dan ESP-Bridge. Pengguna tidak boleh perlu menulis deretan hexadecimal atau isi paket secara manual untuk menjalankan operasi normal.
+
+**KETENTUAN**
+
+- Satu permintaan dikirim sebagai satu kesatuan yang mudah dipahami (misalnya satu baris perintah atau satu input terformat), dan satu respons diterima sebagai satu kesatuan hasil yang dapat dibaca.
+- Program laptop wajib menyediakan daftar operasi yang bisa dijalankan beserta penjelasan setiap operasi, misalnya melalui perintah `help` atau menu pilihan.
+- Setiap operasi harus didokumentasikan dengan: nama operasi, parameter yang diperlukan, penjelasan fungsi, contoh permintaan, dan contoh hasil yang ditampilkan.
+- Nama operasi dan parameter sebaiknya memakai kata yang intuitif (misalnya `order`, `cek`, `status`) daripada kode yang sulit diingat.
+- ESP-Bridge hanya meneruskan dan menerjemahkan; tidak ada langkah operasional tambahan yang dibebankan ke pengguna (misalnya tidak perlu mengetik perintah khusus ke serial monitor untuk memicu perilaku internal bridge).
+- Setiap kegagalan ditunjukkan dengan pesan yang menjelaskan apa yang salah dan, bila memungkinkan, apa yang harus dilakukan pengguna, merujuk pada bagian ERROR CODE.
+- Peserta wajib mendokumentasikan protokol serial Laptop ⇄ ESP-Bridge yang dipilih, termasuk batas akhir permintaan/respons (misalnya karakter baris baru).
+
+**DAFTAR OPERASI YANG BISA DITANGANKAN**
+
+Setiap program laptop wajib mendukung operasi sistem berikut:
+
+| Operasi | Penjelasan |
+|---|---|
+| `help` / daftar operasi | Menampilkan seluruh operasi yang tersedia beserta penjelasan dan contoh pemakaiannya. |
+| `status` | Menampilkan kondisi koneksi serial ke ESP-Bridge (terhubung/port aktif/baudrate). |
+| `token` | Mengecek atau mengatur token 6 byte yang digunakan ESP-Bridge (representasi hexadecimal 12 digit, tanpa mencetak token penuh bila sensitif). |
+| `send` / jalankan aksi | Mengirim satu permintaan proses bisnis ke ESP-Bridge dan menampilkan hasil terjemahannya. |
+| `exit` / `quit` | Menutup port serial dan mengakhiri program dengan rapi. |
+
+Operasi proses bisnis ditambahkan sesuai perusahaan yang dipilih. Contoh untuk DEPOT Makan Kenyang:
+
+| Operasi | Penjelasan | Parameter | Contoh Penggunaan |
+|---|---|---|---|
+| `menu` | Menampilkan daftar menu beserta harga dan ketersediaan. | tidak ada | `menu` |
+| `harga` | Memeriksa harga satu menu tanpa membuat pesanan. | ID menu | `harga 3` |
+| `order` | Membuat pesanan dari satu atau lebih item dan menerima nomor pesanan serta total. | ID menu dan jumlah per item | `order 1x2, 3x1` |
+| `status` | Menanyakan status pesanan berdasarkan nomor pesanan. | nomor pesanan | `status P0007` |
+
+Peserta menyesuaikan daftar operasi proses bisnis di atas dengan perusahaan pilihannya, dan wajib mencantumkan penjelasan untuk setiap operasi pada dokumentasi akhirnya.
 
 ## JSON DAN HEXADECIMAL
 
